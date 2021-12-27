@@ -17,7 +17,7 @@ namespace BookCatalog.Repository
 
         public void CreateBook(Book book)
         {
-            throw new NotImplementedException();
+            _Books.Add(book);
         }
 
         public void DeleteBook(Book book)
@@ -27,7 +27,8 @@ namespace BookCatalog.Repository
 
         public Book GetBook(Guid id)
         {
-            throw new NotImplementedException();
+            var book = _Books.Where(x => x.Id == id).FirstOrDefault();
+            return book;
         }
 
         public IEnumerable<Book> GetBooks()
