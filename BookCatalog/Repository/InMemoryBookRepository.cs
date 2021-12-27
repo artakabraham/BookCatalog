@@ -38,7 +38,11 @@ namespace BookCatalog.Repository
 
         public void UpdateBook(Guid id, Book book)
         {
-            throw new NotImplementedException();
+            var bookIndex = _Books.FindIndex(x => x.Id == id);
+            if (bookIndex > -1)
+            {
+                _Books[bookIndex] = book;
+            }
         }
     }
 }

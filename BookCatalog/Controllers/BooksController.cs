@@ -50,5 +50,20 @@ namespace BookCatalog.Controllers
             _bookRepository.CreateBook(book);
             return Ok();
         }
+
+        [HttpPut("{id}")]
+        public ActionResult UpdateBook(Guid id, CreateOrUpdateBookDto bookDto)
+        {
+            var book = _bookRepository.GetBook(id);
+            if (book is null)
+            {
+                return NotFound();
+            }
+
+            book.Title = bookDto.Title;
+            book.Price = bookDto.Price;
+            _bookRepository.UpdateBook(id, book);
+            return Ok();
+        }
     }
 }
